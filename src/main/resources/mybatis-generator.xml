@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!--根节点 -->
+<generatorConfiguration>
+    <!-- 指定外部的属性元素 -->
+    <properties resource="application.yml"/>
+    <!-- 必须 指定生成一组对象的环境 -->
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!--分隔符 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 通用mapper插件 -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <!-- 此处的 MyMapper注意一定不能被扫描到-->
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+        <!-- 注释 规则-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/myvedios"
+                        userId="root"
+                        password="111111">
+        </jdbcConnection>
+
+        <!--该属性可以控制是否强制DECIMAL和NUMERIC类型的字段转换为Java类型,默认为false,不需要配置-->
+        <!--<javaTypeResolver >-->
+            <!--<property name="forceBigDecimals" value="true" />-->
+        <!--</javaTypeResolver>-->
+
+        <javaModelGenerator targetPackage="com.graduation.myvedios" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="sqlMapper" targetProject="src/main/resources/mapper"/>
+        <javaClientGenerator targetPackage="com.graduation.myvedios.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+        <table tableName="user">
+            <generatedKey column="id" sqlStatement="Mysql" />
+        </table>
+    </context>
+</generatorConfiguration>
