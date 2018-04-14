@@ -41,7 +41,16 @@
         <javaClientGenerator targetPackage="com.graduation.myvedios.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="user">
+        <!--<table tableName="user">-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" />-->
+        <!--</table>-->
+        <!--<table tableName="role">-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" />-->
+        <!--</table>-->
+        <!--<table tableName="user_role">-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" />-->
+        <!--</table>-->
+        <table tableName="type">
             <generatedKey column="id" sqlStatement="Mysql" />
         </table>
     </context>

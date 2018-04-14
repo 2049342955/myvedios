@@ -12,4 +12,5 @@ public interface IUserService {
     PageInfo<User> query(User user);
     User save(User user);
     int delete(User user);
+    User addAdmin(User user);
 }
