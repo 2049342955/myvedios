@@ -60,8 +60,13 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
+    @Transactional
     public int delete(User user) {
-        return mapper.delete(user);
+        Integer result = mapper.delete(user);
+        UserRole userRole = new UserRole();
+        userRole.setUserId(user.getId());
+        userRoleMapper.delete(userRole);
+        return result;
     }
 
     @Override

@@ -54,7 +54,7 @@ public class UserController {
     }
 
     @PostMapping("/addAdmin")
-    public User addAdmin(User user){
+    public User addAdmin(@RequestBody User user){
         user.setStatus("Y");
         return iUserService.addAdmin(user);
     }
